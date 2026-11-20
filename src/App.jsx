@@ -5,6 +5,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import UnauthorizedPage from './pages/UnauthorizedPage';
 import MaterialsPage from './pages/MaterialsPage';
+import ProductsPage from './pages/ProductsPage';
 
 function RootRedirect() {
   const { isAuthenticated, role, loading } = useAuth();
@@ -35,6 +36,7 @@ function NavigationHeader() {
           <>
             <Link to="/admin" className="nav-link">Tableau de bord</Link>
             <Link to="/admin/materials" className="nav-link">Matières Premières</Link>
+            <Link to="/admin/products" className="nav-link">Produits</Link>
           </>
         )}
         {role === ROLES.OPERATOR && (
@@ -77,6 +79,7 @@ export function App() {
               }
             />
             <Route path="/admin/materials" element={<MaterialsPage />} />
+            <Route path="/admin/products" element={<ProductsPage/>}></Route>
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={[ROLES.OPERATOR, ROLES.ADMIN]} />}>
